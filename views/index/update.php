@@ -7,7 +7,7 @@ use yii\Widgets\ActiveForm;
  ?>
 
  <a href="<?= Url::toRoute("index/mostrar") ?>"> Mostrar registro</a>
-   <h2> Editar registro: <?= Html::encode($_GET["id_reg"]) ?> </h2>
+   <h2> Editar registro de usuarios: <?= Html::encode($_GET["id_reg"]) ?> </h2>
 
  <?php $form = ActiveForm::begin([
  	"method"=>"post",
