@@ -50,18 +50,7 @@ use yii\Widgets\ActiveForm;
 		
 	</div>
 
-	<div class="form-group">
 	
-			<?= $form->field($model, "usuario")->input("text") ?>
-		
-	</div>
-
-	<div class="form-group">
-		
-			<?= $form->field($model, "clave")->input("text") ?>
-	
-
-	</div>
 	
 		
 

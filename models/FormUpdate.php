@@ -20,6 +20,7 @@ class FormUpdate extends model
 	
 	public function rules(){
 		return [
+			['id_reg', 'integer', 'message' => 'Id incorrecto'],		
  			[['nombre','apellido','CI','email','usuario','clave'],'required','message'=>'Campos requeridos'],
  			['nombre', 'match', 'pattern' => '/^[a-záéíóúñ\s]+$/i', 'message' => 'Sólo se aceptan letras'],
  			['nombre','match','pattern'=>"/^[0-9a-z]+$/i",'message'=>'Sólo se aceptan letras y números'],

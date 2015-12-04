@@ -8,7 +8,7 @@ use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\helpers\Html;
 use yii\data\Pagination;
-use yii\helpers\url;
+use yii\helpers\Url;
 
 use app\models\ModelRegistro;
 use app\models\Registro;
@@ -25,42 +25,35 @@ class IndexController extends Controller
         $model =new FormUpdate;
         $mensaje = null;
 
-      if($model->load(Yii::$app->request->post())) {
-          if ($model->validate()) {
-
-              $table = Registro::findOne($model->id_reg);
-
-              if($table) 
-              {
-
+     if($model->load(Yii::$app->request->post()))
+        {
+            if($model->validate())
+            {
+                $table = Registro::findOne($model->id_reg);
+                if($table)
+                {
                     $table->nombre = $model->nombre;
                     $table->apellido = $model->apellido;
                     $table->CI = $model->CI;
-                    $table->email = $model->email;
-                    $table->usuario = $model->usuario;
-                    $table->clave = $model->clave;
-
-                    if($table->update())
+                    $table->email = $model->email; 
+                    if ($table->update())
                     {
-                        $mensaje =" Se modifico con exito ";
-                    } 
-                    else 
-                    {
-                        $mensaje =" El registro no fue actualizado";
+                        $mensaje = "El Alumno ha sido actualizado correctamente";
                     }
-                    
-              }
-              else
-              {
-                $mensaje =" El registro no fue encontrado";
-              }
-
-          } 
-          else 
-          {
-              $model->getErrors();
-          }
-
+                    else
+                    {
+                        $mensaje = "El Alumno no ha podido ser actualizado";
+                    }
+                }
+                else
+                {
+                    $mensaje = "El alumno seleccionado no ha sido encontrado";
+                }
+            }
+            else
+            {
+                $model->getErrors();
+            }
         }
 
         if (Yii::$app->request->get("id_reg"))
